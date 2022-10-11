@@ -1,0 +1,22 @@
+{
+  "name": "learn-compile",
+  "version": "1.0.0",
+  "description": "learn how is compiler works in this project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hazel-Lin/Learn-compile.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hazel-Lin/Learn-compile/issues"
+  },
+  "homepage": "https://github.com/Hazel-Lin/Learn-compile#readme",
+  "devDependencies": {
+    "vitest": "^0.24.1"
+  }
+}
