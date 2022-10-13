@@ -8,3 +8,9 @@ export enum TokenType {
   Number,
   String,
 }
+export enum NodeTypes {
+  NumberLiteral = 'NumberLiteral',
+  Program = 'Program',
+  StringLiteral = 'StringLiteral',
+  CallExpression = 'CallExpression',
+}
