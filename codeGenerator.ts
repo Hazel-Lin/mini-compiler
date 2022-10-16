@@ -1,26 +1,19 @@
 export function codeGenerator(newAst: any) {
-  console.log('newAst', newAst)
   let output = ''
   switch (newAst.type) {
     case 'Program':
-      newAst.body.forEach((node: any) => {
+      return newAst.body.forEach((node: any) => {
         codeGenerator(node)
       })
-      break
-
     case 'ExpressionStatement':
-      output += `${codeGenerator(newAst.expression)};`
-      break
+      return(`${codeGenerator(newAst.expression)};`)
     case 'CallExpression':
-      output += `${codeGenerator(newAst.callee)}(${newAst.arguments.map(codeGenerator)
-      .join(', ')} )`
-      break
+      return(`${codeGenerator(newAst.callee)}(${newAst.arguments.map(codeGenerator)
+      .join(', ')} )`)
     case 'Identifier':
-      output += newAst.name
-      break
+      return(newAst.name)
     case 'NumberLiteral':
-      output += newAst.value
-      break
+      return(newAst.value)
   }
   console.log('output', output)
   return output
