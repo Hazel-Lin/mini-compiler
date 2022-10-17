@@ -1,8 +1,9 @@
 import { traverser } from './traverser'
+import { NodeTypes } from './utils/type'
 
 export function transformer(ast: any) {
   const newAst = {
-    type: 'Program',
+    type: NodeTypes.Program,
     body: [],
   }
   ast._context = newAst.body
@@ -11,7 +12,7 @@ export function transformer(ast: any) {
     NumberLiteral: {
       enter(node, parent) {
         parent._context.push({
-          type: 'NumberLiteral',
+          type: NodeTypes.NumberLiteral,
           value: node.value,
         })
       },
@@ -20,7 +21,7 @@ export function transformer(ast: any) {
     StringLiteral: {
       enter(node, parent) {
         parent._context.push({
-          type: 'StringLiteral',
+          type: NodeTypes.StringLiteral,
           value: node.value,
         })
       },
@@ -29,9 +30,9 @@ export function transformer(ast: any) {
     CallExpression: {
       enter(node, parent) {
         let expression: any = {
-          type: 'CallExpression',
+          type: NodeTypes.CallExpression,
           callee: {
-            type: 'Identifier',
+            type: NodeTypes.Identifier,
             name: node.name,
           },
           arguments: [],
@@ -39,7 +40,7 @@ export function transformer(ast: any) {
 
         node._context = expression.arguments
 
-        if (parent.type !== 'CallExpression') {
+        if (parent.type !== NodeTypes.CallExpression) {
           expression = {
             type: 'ExpressionStatement',
             expression,

@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest'
 import { parser } from '../parser'
-import { TokenType } from '../utils/type'
+import { NodeTypes, TokenType } from '../utils/type'
 
 // parser 将tokens转换为AST
 test('parser', () => {
@@ -16,22 +16,22 @@ test('parser', () => {
     { type: TokenType.Paren, value: ')' },
   ]
   const ast = {
-    type: 'Program',
+    type: NodeTypes.Program,
     body: [{
-      type: 'CallExpression',
+      type: NodeTypes.CallExpression,
       name: 'add',
       params: [{
-        type: 'NumberLiteral',
+        type: NodeTypes.NumberLiteral,
         value: '2',
       },
       {
-        type: 'CallExpression',
+        type: NodeTypes.CallExpression,
         name: 'subtract',
         params: [{
-          type: 'NumberLiteral',
+          type: NodeTypes.NumberLiteral,
           value: '4',
         }, {
-          type: 'NumberLiteral',
+          type: NodeTypes.NumberLiteral,
           value: '2',
         }],
       }],
@@ -44,9 +44,9 @@ test('number', () => {
     { type: TokenType.Number, value: '2' },
   ]
   const ast = {
-    type: 'Program',
+    type: NodeTypes.Program,
     body: [{
-      type: 'NumberLiteral',
+      type: NodeTypes.NumberLiteral,
       value: '2',
     }],
   }
@@ -57,9 +57,9 @@ test('string', () => {
     { type: TokenType.String, value: 'hello world' },
   ]
   const ast = {
-    type: 'Program',
+    type: NodeTypes.Program,
     body: [{
-      type: 'StringLiteral',
+      type: NodeTypes.StringLiteral,
       value: 'hello world',
     }],
   }
@@ -74,18 +74,18 @@ test('simple demo', () => {
     { type: TokenType.Paren, value: ')' },
   ]
   const ast = {
-    type: 'Program',
+    type: NodeTypes.Program,
     body: [
       {
-        type: 'CallExpression',
+        type: NodeTypes.CallExpression,
         name: 'add',
         params: [
           {
-            type: 'NumberLiteral',
+            type: NodeTypes.NumberLiteral,
             value: '1',
           },
           {
-            type: 'NumberLiteral',
+            type: NodeTypes.NumberLiteral,
             value: '1',
           },
         ],

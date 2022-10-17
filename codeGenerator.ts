@@ -1,17 +1,19 @@
+import { NodeTypes } from './utils/type'
+
 export function codeGenerator(newAst: any) {
   switch (newAst.type) {
-    case 'Program':
+    case NodeTypes.Program:
       return newAst.body.map(codeGenerator).join('')
     case 'ExpressionStatement':
       return (`${codeGenerator(newAst.expression)};`)
-    case 'CallExpression':
+    case NodeTypes.CallExpression:
       return (`${codeGenerator(newAst.callee)}(${newAst.arguments.map(codeGenerator)
       .join(', ')})`)
-    case 'Identifier':
+    case NodeTypes.Identifier:
       return (newAst.name)
-    case 'NumberLiteral':
+    case NodeTypes.NumberLiteral:
       return (newAst.value)
-    case 'StringLiteral':
+    case NodeTypes.StringLiteral:
       return `"${newAst.value}"`
   }
 }

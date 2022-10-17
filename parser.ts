@@ -1,9 +1,9 @@
 import type { Token } from './utils/type'
-import { TokenType } from './utils/type'
+import { NodeTypes, TokenType } from './utils/type'
 
 export function parser(tokens: Token[]) {
   const ast: any = {
-    type: 'Program',
+    type: NodeTypes.Program,
     body: [],
   }
   let current = 0
@@ -15,7 +15,7 @@ export function parser(tokens: Token[]) {
       // 判断后 移动指针
       current++
       return {
-        type: 'NumberLiteral',
+        type: NodeTypes.NumberLiteral,
         value: t.value,
       }
     }
@@ -23,14 +23,14 @@ export function parser(tokens: Token[]) {
       // 判断后 移动指针
       current++
       return {
-        type: 'StringLiteral',
+        type: NodeTypes.StringLiteral,
         value: t.value,
       }
     }
     if (t.type === TokenType.Paren && t.value === '(') {
       t = tokens[++current]
       const node: any = {
-        type: 'CallExpression',
+        type: NodeTypes.CallExpression,
         name: t.value,
         params: [],
       }

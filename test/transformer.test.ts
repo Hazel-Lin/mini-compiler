@@ -1,59 +1,60 @@
 import { expect, test } from 'vitest'
 import { transformer } from '../transformer'
+import { NodeTypes } from '../utils/type'
 
 test('transformer', () => {
   const ast = {
-    type: 'Program',
+    type: NodeTypes.Program,
     body: [{
       // type: 'ExpressionStatement',
       // expression:{}
-      type: 'CallExpression',
+      type: NodeTypes.CallExpression,
       // callee:{
-      //   type: 'Identifier',
+      //   type: NodeTypes.Identifier,
       //   name: 'add',
       // }
       name: 'add',
       // params => arguments
       params: [{
-        type: 'NumberLiteral',
+        type: NodeTypes.NumberLiteral,
         value: '2',
       }, {
-        type: 'CallExpression',
+        type: NodeTypes.CallExpression,
         name: 'subtract',
         params: [{
-          type: 'NumberLiteral',
+          type: NodeTypes.NumberLiteral,
           value: '4',
         }, {
-          type: 'NumberLiteral',
+          type: NodeTypes.NumberLiteral,
           value: '2',
         }],
       }],
     }],
   }
   const newAst = {
-    type: 'Program',
+    type: NodeTypes.Program,
     body: [{
       type: 'ExpressionStatement',
       expression: {
-        type: 'CallExpression',
+        type: NodeTypes.CallExpression,
         callee: {
-          type: 'Identifier',
+          type: NodeTypes.Identifier,
           name: 'add',
         },
         arguments: [{
-          type: 'NumberLiteral',
+          type: NodeTypes.NumberLiteral,
           value: '2',
         }, {
-          type: 'CallExpression',
+          type: NodeTypes.CallExpression,
           callee: {
-            type: 'Identifier',
+            type: NodeTypes.Identifier,
             name: 'subtract',
           },
           arguments: [{
-            type: 'NumberLiteral',
+            type: NodeTypes.NumberLiteral,
             value: '4',
           }, {
-            type: 'NumberLiteral',
+            type: NodeTypes.NumberLiteral,
             value: '2',
           }],
         }],

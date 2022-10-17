@@ -1,3 +1,5 @@
+import { NodeTypes } from './utils/type'
+
 export function traverser(ast: any, visitor: any) {
   // 遍历树结构 深度优先算法
   function traverseArray(array: any, parent: any) {
@@ -13,16 +15,16 @@ export function traverser(ast: any, visitor: any) {
       methods.enter(node, parent)
 
     switch (node.type) {
-      case 'Program':
+      case NodeTypes.Program:
         traverseArray(node.body, node)
         break
 
-      case 'CallExpression':
+      case NodeTypes.CallExpression:
         traverseArray(node.params, node)
         break
 
-      case 'NumberLiteral':
-      case 'StringLiteral':
+      case NodeTypes.NumberLiteral:
+      case NodeTypes.StringLiteral:
         break
       default:
         throw new TypeError(node.type)

@@ -13,4 +13,5 @@ export enum NodeTypes {
   Program = 'Program',
   StringLiteral = 'StringLiteral',
   CallExpression = 'CallExpression',
+  Identifier = 'Identifier',
 }
