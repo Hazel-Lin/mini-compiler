@@ -1,10 +1,10 @@
 import { expect, test } from 'vitest'
 import { parser } from '../parser'
-import { NodeTypes, TokenType } from '../utils/type'
+import { NodeTypes, Token, TokenType } from '../utils/type'
 
 // parser 将tokens转换为AST
 test('parser', () => {
-  const tokens: any = [
+  const tokens: Token[] = [
     { type: TokenType.Paren, value: '(' },
     { type: TokenType.Name, value: 'add' },
     { type: TokenType.Number, value: '2' },
@@ -40,7 +40,7 @@ test('parser', () => {
   expect(parser(tokens)).toEqual(ast)
 })
 test('number', () => {
-  const tokens: any[] = [
+  const tokens: Token[] = [
     { type: TokenType.Number, value: '2' },
   ]
   const ast = {
@@ -53,7 +53,7 @@ test('number', () => {
   expect(parser(tokens)).toEqual(ast)
 })
 test('string', () => {
-  const tokens: any[] = [
+  const tokens: Token[] = [
     { type: TokenType.String, value: 'hello world' },
   ]
   const ast = {
@@ -66,7 +66,7 @@ test('string', () => {
   expect(parser(tokens)).toEqual(ast)
 })
 test('simple demo', () => {
-  const tokens: any[] = [
+  const tokens: Token[] = [
     { type: TokenType.Paren, value: '(' },
     { type: TokenType.Name, value: 'add' },
     { type: TokenType.Number, value: '1' },

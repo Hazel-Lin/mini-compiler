@@ -15,3 +15,14 @@ export enum NodeTypes {
   CallExpression = 'CallExpression',
   Identifier = 'Identifier',
 }
+export interface AstNode {
+  type: NodeTypes.Program,
+  body: ChildNode[],
+  context?: ChildNode[];
+}
+export interface CallExpressionNode{
+  type: NodeTypes.CallExpression,
+  name: string,
+  params: ChildNode[],
+  context?: ChildNode[];
+}

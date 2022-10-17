@@ -1,15 +1,15 @@
-import type { Token } from './utils/type'
+import type { AstNode, CallExpressionNode, Token } from './utils/type'
 import { NodeTypes, TokenType } from './utils/type'
 
 export function parser(tokens: Token[]) {
-  const ast: any = {
+  const ast: AstNode = {
     type: NodeTypes.Program,
     body: [],
   }
   let current = 0
 
   // 递归调用
-  function walk() {
+  function walk(): any {
     let t = tokens[current]
     if (t.type === TokenType.Number) {
       // 判断后 移动指针
@@ -29,7 +29,7 @@ export function parser(tokens: Token[]) {
     }
     if (t.type === TokenType.Paren && t.value === '(') {
       t = tokens[++current]
-      const node: any = {
+      const node: CallExpressionNode = {
         type: NodeTypes.CallExpression,
         name: t.value,
         params: [],
