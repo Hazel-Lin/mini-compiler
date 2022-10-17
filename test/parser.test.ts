@@ -5,15 +5,15 @@ import { TokenType } from '../utils/type'
 // parser 将tokens转换为AST
 test('parser', () => {
   const tokens: any = [
-    { type: 'paren', value: '(' },
-    { type: 'name', value: 'add' },
-    { type: 'number', value: '2' },
-    { type: 'paren', value: '(' },
-    { type: 'name', value: 'subtract' },
-    { type: 'number', value: '4' },
-    { type: 'number', value: '2' },
-    { type: 'paren', value: ')' },
-    { type: 'paren', value: ')' },
+    { type: TokenType.Paren, value: '(' },
+    { type: TokenType.Name, value: 'add' },
+    { type: TokenType.Number, value: '2' },
+    { type: TokenType.Paren, value: '(' },
+    { type: TokenType.Name, value: 'subtract' },
+    { type: TokenType.Number, value: '4' },
+    { type: TokenType.Number, value: '2' },
+    { type: TokenType.Paren, value: ')' },
+    { type: TokenType.Paren, value: ')' },
   ]
   const ast = {
     type: 'Program',
@@ -41,7 +41,7 @@ test('parser', () => {
 })
 test('number', () => {
   const tokens: any[] = [
-    { type: 'number', value: '2' },
+    { type: TokenType.Number, value: '2' },
   ]
   const ast = {
     type: 'Program',
@@ -54,7 +54,7 @@ test('number', () => {
 })
 test('string', () => {
   const tokens: any[] = [
-    { type: 'string', value: 'hello world' },
+    { type: TokenType.String, value: 'hello world' },
   ]
   const ast = {
     type: 'Program',

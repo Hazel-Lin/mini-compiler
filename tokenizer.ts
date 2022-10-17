@@ -59,7 +59,7 @@ export function tokenizer(input: string) {
       }
 
       tokens.push({
-        type: TokenType.Name,
+        type: TokenType.Number,
         value,
       })
       continue
