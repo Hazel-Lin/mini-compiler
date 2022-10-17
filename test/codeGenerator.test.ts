@@ -1,8 +1,8 @@
 import { expect, test } from 'vitest'
 import { codeGenerator } from '../codeGenerator'
 
-test.only('codeGenerator', () => {
-  const output = 'add(2, subtract(4, 2))'
+test('codeGenerator', () => {
+  const output = 'add(2, subtract(4, 2));'
 
   const newAst = {
     type: 'Program',
