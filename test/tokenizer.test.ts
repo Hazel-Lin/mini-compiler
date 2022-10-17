@@ -44,7 +44,6 @@ test('add', () => {
   const tokens = [
     { type: TokenType.Name, value: 'add' },
   ]
-  console.log('测试add')
   expect(tokenizer(input)).toEqual(tokens)
 })
 
@@ -54,7 +53,6 @@ test('subtract', () => {
   const tokens = [
     { type: TokenType.Name, value: 'subtract' },
   ]
-  console.log('测试subtract')
   expect(tokenizer(input)).toEqual(tokens)
 })
 // number
@@ -63,7 +61,6 @@ test('number', () => {
   const tokens = [
     { type: TokenType.Number, value: '2' },
   ]
-  console.log('测试number')
   expect(tokenizer(input)).toEqual(tokens)
 })
 
@@ -77,6 +74,5 @@ test('simple demo', () => {
     { type: TokenType.Number, value: '2' },
     { type: TokenType.Paren, value: ')' },
   ]
-  console.log('测试simple demo')
   expect(tokenizer(input)).toEqual(tokens)
 })

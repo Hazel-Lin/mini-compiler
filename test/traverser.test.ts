@@ -65,7 +65,6 @@ test('traverser', () => {
   }
 
   traverser(ast, visitor)
-  console.log(callCounts, 'callCounts')
   expect(callCounts).toEqual([
     ['program-enter', NodeTypes.Program, ''],
     ['callExpression-enter', NodeTypes.CallExpression, NodeTypes.Program],
